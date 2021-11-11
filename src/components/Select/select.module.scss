@@ -1,0 +1,25 @@
+.select {
+	appearance: none;
+	background: url("./arrow-down.png") 92% / 15% no-repeat var(--accent);
+	background-size: 1.5rem;
+	border: 2px solid black;
+	color: black;
+	font-family: inherit;
+	font-weight: bold;
+	font-size: 2rem;
+	padding: 0.7rem 3rem 0.7rem 1.5rem;
+	outline: none;
+	cursor: pointer;
+	box-shadow: 2px 2px 0px 0px rgba(0, 0, 0, 0.5);
+	box-sizing: border-box;
+	vertical-align: top;
+
+	&:hover {
+		background-color: var(--accent-hover);
+	}
+	&:active {
+		box-shadow: 1px 1px 0px 0px rgba(0, 0, 0, 0.5);
+		padding-top: 0.8rem;
+		padding-bottom: 0.6rem;
+	}
+}

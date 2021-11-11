@@ -1,0 +1,155 @@
+.todo {
+	position: relative;
+
+	min-width: 250px;
+
+	& .todo__inner {
+		border: 2px solid black;
+		background: var(--secondary-bg);
+		padding: 2rem;
+		box-shadow: var(--shadow) var(--shadow-color);
+		&:hover {
+			box-shadow: var(--shadow-hover) var(--shadow-color);
+		}
+
+		&.complete {
+			opacity: 0.3;
+
+			pointer-events: none;
+		}
+	}
+
+	& .todo__controls {
+		position: absolute;
+		top: 1rem;
+		right: 1rem;
+
+		display: flex;
+
+		z-index: 1;
+
+		& .btn:nth-child(1) {
+			margin-right: 1rem;
+		}
+	}
+}
+
+.todo__title {
+	font-size: 2.5rem;
+
+	border-bottom: 3px solid rgb(209, 197, 179);
+	padding-bottom: 5px;
+	margin-bottom: 10px;
+}
+
+.todo__body {
+	color: rgba(0, 0, 0, 0.6);
+	font-size: 1.5rem;
+
+	height: 12rem;
+	padding: 1rem;
+	border-radius: 8px;
+	border: 2px solid rgb(241, 234, 224);
+
+	overflow: auto;
+	overflow-wrap: break-word;
+}
+
+.todo__bottom {
+	display: flex;
+	justify-content: space-between;
+
+	margin-top: 2rem;
+}
+
+.todo__status {
+	border: 2px dashed black;
+	padding: 5px 10px;
+	border-radius: 3px;
+
+	text-align: center;
+
+	font-weight: bold;
+	font-size: 1.5rem;
+
+	&.low {
+		background-color: var(--blue);
+	}
+
+	&.normal {
+		background-color: var(--green);
+	}
+
+	&.high {
+		background-color: var(--red);
+	}
+}
+
+.todo__menu {
+	position: relative;
+	border: 2px solid black;
+	padding: 5px 10px;
+	border-radius: 8px;
+	cursor: pointer;
+
+	&:before {
+		content: "";
+		position: absolute;
+		width: 150%;
+		height: 100%;
+		top: 10px;
+		left: -15px;
+		background: transparent;
+		display: none;
+	}
+	&:after {
+		content: "";
+		position: absolute;
+		width: 8px;
+		height: 8px;
+		border-right: 2px solid black;
+		border-bottom: 2px solid black;
+		background: var(--green);
+		transform: rotate(45deg);
+		top: 27px;
+		left: 17px;
+		display: none;
+	}
+
+	& span {
+		font-size: 4rem;
+		line-height: 10px;
+	}
+
+	& ul {
+		position: absolute;
+		top: 40px;
+		left: -20px;
+		list-style: none;
+		border: 2px solid black;
+		padding: 5px;
+		border-radius: 8px;
+		background: var(--secondary-bg);
+		display: none;
+		z-index: 2;
+
+		& li {
+			font-size: 2rem;
+
+			cursor: pointer;
+			&:hover {
+				color: var(--green-dark);
+			}
+		}
+	}
+	&:hover {
+		background: var(--green);
+		& ul {
+			display: block;
+		}
+		&:after,
+		&:before {
+			display: block;
+		}
+	}
+}

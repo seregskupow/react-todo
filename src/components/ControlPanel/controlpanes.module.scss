@@ -1,0 +1,38 @@
+.control__panel {
+	width: 100%;
+
+	margin-top: 3rem;
+
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+	grid-column-gap: 2rem;
+	grid-row-gap: 1rem;
+
+	& .clear__all {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+
+		& span {
+			margin-right: 1rem;
+		}
+	}
+
+	& .select {
+		width: 100%;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+
+		& p {
+			font-size: 2rem;
+			font-weight: bold;
+
+			margin-right: 1rem;
+		}
+
+		& :nth-child(2) {
+			flex-grow: 1;
+		}
+	}
+}

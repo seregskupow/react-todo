@@ -1,0 +1,86 @@
+::-webkit-scrollbar {
+	width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+	background: rgb(246, 239, 228);
+	border: 2px solid black;
+	border-radius: 5px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+	background: cyan;
+	border: 2px solid black;
+	border-radius: 5px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+	background: rgb(0, 216, 216);
+}
+
+:root {
+	--container-width: 1800px;
+
+	--shadow: 2px 2px 0px 0px;
+	--shadow-hover: 1px 1px 0px 0px;
+
+	--shadow-color: rgba(0, 0, 0, 0.5);
+
+	--primary-bg: #{$PrimaryBGLight};
+	--secondary-bg: #{$SecondaryBGLight};
+
+	--accent: #{$accentLight};
+	--accent-hover: #{$accentHoverLight};
+
+	--danger: #{$dangerLight};
+	--danger-hover: #{$dangerHoverLight};
+
+	--green: #{$greenLight};
+	--green-dark: #{$darkGreenLight};
+
+	--blue: #{$blueLight};
+
+	--red: #{$redLight};
+	--red-dark: #{$darkRedLight};
+	--red-light: #{$lightRedLight};
+}
+
+[data-theme="dark"] {
+	--shadow-color: rgba(0, 0, 0, 0.5);
+
+	--primary-bg: #{$PrimaryBGDark};
+	--secondary-bg: #{$SecondaryBGDark};
+
+	--accent: #{$accentDark};
+	--accent-hover: #{$accentHoverDark};
+
+	--danger: #{$dangerDark};
+	--danger-hover: #{$dangerHoverDark};
+
+	--green: #{$greenDark};
+	--green-dark: #{$greenDark};
+
+	--blue: #{$blueDark};
+
+	--red: #{$redDark};
+	--red-dark: #{$darkRedDark};
+	--red-light: #{$lightRedDark};
+}
+
+*,
+body {
+	margin: 0;
+	padding: 0;
+}
+
+html {
+	font-size: 10px;
+}
+
+body {
+	background-color: var(--primary-bg);
+	font-family: "Neucha", cursive;
+}

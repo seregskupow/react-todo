@@ -1,0 +1,39 @@
+.button {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	appearance: none;
+	background-color: var(--accent);
+	border: 2px solid black;
+	color: black;
+	font-family: inherit;
+	font-weight: bold;
+	font-size: 2rem;
+	padding: 0.7rem 1.5rem;
+	outline: none;
+	cursor: pointer;
+	box-shadow: var(--shadow) var(--shadow-color);
+	box-sizing: border-box;
+	vertical-align: top;
+
+	&.danger {
+		background-color: var(--danger);
+
+		&:hover {
+			background-color: var(--danger-hover);
+		}
+	}
+
+	&:hover {
+		background-color: var(--accent-hover);
+	}
+
+	&:active {
+		background-color: var(--accent-hover);
+		box-shadow: var(--shadow-hover) var(--shadow-color);
+
+		padding-top: 0.8rem;
+		padding-bottom: 0.6rem;
+	}
+}

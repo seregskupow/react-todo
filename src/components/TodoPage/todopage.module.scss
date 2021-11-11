@@ -1,0 +1,15 @@
+.todo__page {
+	max-width: 1500px;
+	margin: 0 auto;
+}
+
+.todo__container {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+	grid-column-gap: 2rem;
+	grid-row-gap: 1rem;
+
+	width: 100%;
+
+	margin-top: 5rem;
+}
