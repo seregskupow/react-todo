@@ -1,8 +1,8 @@
-import { FC } from 'react';
-import styles from './login.module.scss';
-import { auth } from '../../firebase';
-import firebase from 'firebase/app';
 import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
+import { FC } from 'react';
+import { auth } from '../../firebase';
+import AuthProviderBtn from '../AuthProviderBtn';
+import styles from './login.module.scss';
 
 const Login: FC = () => {
   const sighInWithGoogle = () => {
@@ -10,7 +10,11 @@ const Login: FC = () => {
   };
   return (
     <div className={styles.login__container}>
-      <button onClick={sighInWithGoogle}>Login</button>
+      <div className={styles.login}>
+        <h1 className={styles.login__title}>Login with:</h1>
+        <AuthProviderBtn provider='google' onClick={sighInWithGoogle} />
+        <AuthProviderBtn provider='facebook' onClick={() => {}} disabled />
+      </div>
     </div>
   );
 };

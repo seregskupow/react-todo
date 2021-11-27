@@ -1,0 +1,36 @@
+.theme__toggle__btn {
+	display: flex;
+	align-items: center;
+
+	& p {
+		font-size: 1.8rem;
+		font-weight: bold;
+
+		margin-right: 0.5rem;
+	}
+}
+.theme__toggle {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+
+	& .icon {
+		cursor: pointer;
+
+		&:active {
+			transform: scale(0.9);
+		}
+
+		&.sun {
+			color: #fedb5b;
+		}
+
+		&.moon {
+			color: #6b88ef;
+		}
+
+		& svg {
+			font-size: 1.5rem;
+		}
+	}
+}

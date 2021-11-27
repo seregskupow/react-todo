@@ -1,22 +1,21 @@
-import { TodoDto } from '@/dto/todo.dto';
-import React, { useState } from 'react';
-import TextInput from '@/components/TextInput';
-import styles from './todoform.module.scss';
-import Select from '../Select';
-import { priorities } from '@/data/index';
 import Button from '@/components/Button';
+import TextInput from '@/components/TextInput';
 import { StoresContext } from '@/context/index';
-import { useContext } from 'react';
+import { priorities } from '@/data/index';
+import { TodoDto } from '@/dto/todo.dto';
+import React, { useContext, useState } from 'react';
+import Select from '../Select';
+import styles from './todoform.module.scss';
 
 interface TodoFormProps {
-  todo?: TodoDto;
+  todo?: Omit<TodoDto, 'complete'>;
   onFormSubmit: (todo: Omit<TodoDto, 'id' | 'complete'>) => void;
 }
 const TodoForm: React.FC<TodoFormProps> = ({
   onFormSubmit = () => {},
   todo,
 }) => {
-  const { searchStore, modalStore } = useContext(StoresContext);
+  const { modalStore } = useContext(StoresContext);
   const [priority, setPriority] = useState<number>(todo?.priority || 1);
   const [title, setTitle] = useState<string>(todo?.title || '');
   const [description, setDescription] = useState<string>(todo?.body || '');
@@ -28,6 +27,7 @@ const TodoForm: React.FC<TodoFormProps> = ({
       body: description,
       priority,
     });
+    modalStore.setShowModal(false);
   };
 
   return (
@@ -54,8 +54,6 @@ const TodoForm: React.FC<TodoFormProps> = ({
             <textarea
               value={description}
               onChange={(e) => setDescription(e.target.value)}
-              cols={30}
-              rows={10}
               required
             ></textarea>
           </div>
@@ -67,8 +65,10 @@ const TodoForm: React.FC<TodoFormProps> = ({
             >
               {priorities
                 .filter((item) => item.value !== 0)
-                .map(({ value, text }) => (
-                  <option value={value}>{text}</option>
+                .map(({ uid, value, text }) => (
+                  <option key={uid} value={value}>
+                    {text}
+                  </option>
                 ))}
             </Select>
           </div>

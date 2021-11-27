@@ -25,6 +25,12 @@ class SearchparamsStore {
   setSearch(search: string) {
     this.search = search;
   }
+
+  resetSearch() {
+    this.search = '';
+    this.priority = 0;
+    this.status = 0;
+  }
 }
 
 export default SearchparamsStore;

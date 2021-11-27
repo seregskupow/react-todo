@@ -2,7 +2,7 @@
 $PrimaryBGLight: #ffffff;
 $SecondaryBGLight: #fdf9f3;
 
-$accentLight: cyan;
+$accentLight: #00ffff;
 $accentHoverLight: #00ffbf;
 
 $dangerLight: #f05f4c;
@@ -17,21 +17,29 @@ $redLight: #f05f4c;
 $darkRedLight: #c55546;
 $lightRedLight: #f5705e;
 
+$borderColorLight: black;
+
+$textColorLight: black;
+
 //dark theme
 $PrimaryBGDark: #1a1a1b;
 $SecondaryBGDark: #252525;
 
-$accentDark: cyan;
-$accentHoverDark: #00ffbf;
+$accentDark: rgb(0, 233, 233);
+$accentHoverDark: #00e9af;
 
-$dangerDark: #f05f4c;
+$dangerDark: #db5847;
 $dangerHoverDark: #c55546;
 
 $greenDark: #00ffbf;
 $darkGreenDark: #02aa80;
 
-$blueDark: cyan;
+$blueDark: rgb(2, 231, 231);
 
 $redDark: #f05f4c;
 $darkRedDark: #c55546;
 $lightRedDark: #f5705e;
+
+$borderColorDark: #353535;
+
+$textColorDark: #c8c8c8;

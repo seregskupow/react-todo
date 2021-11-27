@@ -1,38 +1,47 @@
-import styles from './todo.module.scss';
-import { FaUndo, FaTimes } from 'react-icons/fa';
 import Button from '@/components/Button';
-import { priorities } from '@/data/index';
 import { StoresContext } from '@/context/index';
-import { useContext } from 'react';
+import { priorities } from '@/data/index';
 import { observer } from 'mobx-react-lite';
+import { useContext } from 'react';
+import { FaTimes, FaUndo } from 'react-icons/fa';
+import styles from './todo.module.scss';
 
 interface TodoProps {
-  id: number;
+  id: string;
   title: string;
   body: string;
   priority: number;
   complete: boolean;
-  onDeleteTodo: (id: number) => void;
-  onComleteTodo: (id: number) => void;
+  onDeleteTodo: (id: string) => void;
+  onComleteTodo: (id: string, complete: boolean) => void;
 }
 
 const Todo: React.FC<TodoProps> = observer(
   ({ id, title, body, priority, complete, onDeleteTodo, onComleteTodo }) => {
-    const { searchStore, modalStore, todoStore } = useContext(StoresContext);
+    const { modalStore, todoStore } = useContext(StoresContext);
     const priorityCls =
       priorities.find((item) => item.value === priority)?.text || 'normal';
+
+    const deleteTodohandler = () => {
+      if (window.confirm('Delete todo?')) {
+        onDeleteTodo(id);
+      }
+    };
     return (
       <div className={styles.todo}>
         <div className={styles.todo__controls}>
           <div className={styles.btn}>
             {complete && (
-              <Button>
+              <Button
+                onClick={() => onComleteTodo(id, complete)}
+                title='Restore todo'
+              >
                 <FaUndo />
               </Button>
             )}
           </div>
           <div className={styles.btn}>
-            <Button danger>
+            <Button danger onClick={deleteTodohandler} title='Delete todo'>
               <FaTimes />
             </Button>
           </div>
@@ -44,9 +53,7 @@ const Todo: React.FC<TodoProps> = observer(
           )}
         >
           <h1 className={styles.todo__title}>{title}</h1>
-          <p className={styles.todo__body}>
-            {body.replace(/\r\n/g, '<br />').replace(/[\r\n]/g, '<br />')}
-          </p>
+          <p className={styles.todo__body}>{body}</p>
           <div className={styles.todo__bottom}>
             <div
               className={[styles.todo__status, styles[priorityCls]].join(' ')}
@@ -56,16 +63,16 @@ const Todo: React.FC<TodoProps> = observer(
             <div className={styles.todo__menu}>
               <span>...</span>
               <ul>
-                <li onClick={() => onComleteTodo(id)}>done</li>
+                <li onClick={() => onComleteTodo(id, complete)}>done</li>
                 <li
                   onClick={() => {
                     todoStore.setIdToEdit(id);
-                    modalStore.openEditModal(id);
+                    modalStore.openEditModal();
                   }}
                 >
                   edit
                 </li>
-                <li onClick={() => onDeleteTodo(id)}>delete</li>
+                <li onClick={deleteTodohandler}>delete</li>
               </ul>
             </div>
           </div>

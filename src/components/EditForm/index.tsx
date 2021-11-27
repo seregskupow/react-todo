@@ -1,18 +1,39 @@
-import { TodoDto } from '@/dto/todo.dto';
-import React, { useContext } from 'react';
 import TodoForm from '@/components/TodoForm';
-import { observer } from 'mobx-react-lite';
 import { StoresContext } from '@/context/index';
-
+import { TodoDto } from '@/dto/todo.dto';
+import { collection, doc, setDoc } from 'firebase/firestore';
+import { observer } from 'mobx-react-lite';
+import React, { useContext } from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { useDocument } from 'react-firebase-hooks/firestore';
+import { auth, firestore } from 'src/firebase';
 interface EditFormProps {}
-const EditForm: React.FC<EditFormProps> = observer(({}) => {
+const EditForm: React.FC<EditFormProps> = observer(() => {
+  const [user] = useAuthState(auth);
+  const todosRef = collection(firestore, `users/${user?.uid}/todos/`);
   const { todoStore } = useContext(StoresContext);
-  const editTodo = (todo: Omit<TodoDto, 'id' | 'complete'>) => {
+  const [todoToEdit] = useDocument(doc(todosRef, todoStore.idToEdit));
+
+  const editTodo = async (todo: Omit<TodoDto, 'id' | 'complete'>) => {
     const { title, priority, body } = todo;
+    await setDoc(
+      doc(todosRef, todoStore.idToEdit),
+      {
+        title,
+        priority,
+        body,
+      },
+      { merge: true }
+    );
   };
   return (
     <>
-      <TodoForm onFormSubmit={editTodo} todo={todoStore.todoToEdit} />
+      {todoToEdit && (
+        <TodoForm
+          onFormSubmit={editTodo}
+          todo={{ ...(todoToEdit.data() as TodoDto), id: todoToEdit.id }}
+        />
+      )}
     </>
   );
 });

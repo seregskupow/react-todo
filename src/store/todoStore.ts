@@ -4,7 +4,7 @@ import { makeAutoObservable } from 'mobx';
 class TodoStore {
   todos: TodoDto[] = [];
 
-  idToEdit: number = -1;
+  idToEdit: string = '';
 
   constructor() {
     makeAutoObservable(this, {}, { deep: true });
@@ -14,7 +14,7 @@ class TodoStore {
     this.todos = todos;
   }
 
-  setIdToEdit(id: number) {
+  setIdToEdit(id: string) {
     this.idToEdit = id;
   }
 

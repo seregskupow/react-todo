@@ -1,12 +1,14 @@
 .text-input {
+	color: var(--text-color);
 	background: var(--secondary-bg);
-	border: 2px solid black;
+	border: 2px solid var(--border-color);
 	outline: none;
 	padding: 0.5rem 0.5rem;
 	font-family: inherit;
 	font-weight: bold;
 	font-size: 2rem;
 	box-shadow: var(--shadow) var(--shadow-color);
+
 	&:focus {
 		box-shadow: var(--shadow-hover) var(--shadow-color);
 	}

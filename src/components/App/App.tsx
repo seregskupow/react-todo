@@ -1,15 +1,16 @@
-import styles from './app.module.scss';
+import Footer from '@/components/Footer';
+import Loader from '@/components/Loader';
+import Login from '@/components/Login';
+import Navbar from '@/components/Navbar';
+import TodoPage from '@/components/TodoPage';
 import { useEffect } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { auth } from '../../firebase';
+import { auth } from 'src/firebase';
 import { setTheme } from '../../utils/setTheme';
-import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
-import Login from '@/components/Login';
-import TodoPage from '@/components/TodoPage';
+import styles from './app.module.scss';
 
 const App: React.FC = () => {
-  const [user] = useAuthState(auth);
+  const [user, loading] = useAuthState(auth);
   useEffect(() => {
     setTheme();
   }, []);
@@ -17,13 +18,9 @@ const App: React.FC = () => {
     <div className='App'>
       <Navbar />
       <div className={styles.app__container}>
-        {user ? (
-          <>
-            <TodoPage />
-          </>
-        ) : (
-          <Login />
-        )}
+        {loading && <Loader />}
+        {!loading && !user && <Login />}
+        {user && <TodoPage />}
       </div>
 
       <Footer />

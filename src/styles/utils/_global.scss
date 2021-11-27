@@ -4,23 +4,31 @@
 
 /* Track */
 ::-webkit-scrollbar-track {
-	background: rgb(246, 239, 228);
-	border: 2px solid black;
+	background: #f6efe4;
+	border: 2px solid var(--border-color);
 	border-radius: 5px;
+}
+
+:root[data-theme="dark"] {
+	::-webkit-scrollbar-track {
+		background: #1b1b1b;
+	}
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-	background: cyan;
-	border: 2px solid black;
+	background: var(--accent);
+	border: 2px solid var(--border-color);
 	border-radius: 5px;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-	background: rgb(0, 216, 216);
+	background: var(--accent);
 }
-
+$navfootHeight: 120px;
+$controlPanelHeight: 45px;
+$paddingTop: 3rem;
 :root {
 	--container-width: 1800px;
 
@@ -28,6 +36,10 @@
 	--shadow-hover: 1px 1px 0px 0px;
 
 	--shadow-color: rgba(0, 0, 0, 0.5);
+
+	--border-color: #{$borderColorLight};
+
+	--text-color: #{$textColorLight};
 
 	--primary-bg: #{$PrimaryBGLight};
 	--secondary-bg: #{$SecondaryBGLight};
@@ -50,6 +62,10 @@
 
 [data-theme="dark"] {
 	--shadow-color: rgba(0, 0, 0, 0.5);
+
+	--border-color: #{$borderColorDark};
+
+	--text-color: #{$textColorDark};
 
 	--primary-bg: #{$PrimaryBGDark};
 	--secondary-bg: #{$SecondaryBGDark};
@@ -83,4 +99,6 @@ html {
 body {
 	background-color: var(--primary-bg);
 	font-family: "Neucha", cursive;
+
+	color: var(--text-color);
 }

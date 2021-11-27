@@ -1,5 +1,5 @@
 import { rootStore } from '../store/index';
-import React, { createContext } from 'react';
+import React from 'react';
 
 export const StoresContext = React.createContext(rootStore);
 

@@ -4,7 +4,7 @@
 	min-width: 250px;
 
 	& .todo__inner {
-		border: 2px solid black;
+		border: 2px solid var(--border-color);
 		background: var(--secondary-bg);
 		padding: 2rem;
 		box-shadow: var(--shadow) var(--shadow-color);
@@ -39,11 +39,16 @@
 
 	border-bottom: 3px solid rgb(209, 197, 179);
 	padding-bottom: 5px;
+	padding-right: 50px;
 	margin-bottom: 10px;
+
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
 }
 
 .todo__body {
-	color: rgba(0, 0, 0, 0.6);
+	color: var(--text-color);
 	font-size: 1.5rem;
 
 	height: 12rem;
@@ -53,6 +58,14 @@
 
 	overflow: auto;
 	overflow-wrap: break-word;
+	white-space: pre-wrap;
+}
+
+:root[data-theme="dark"] {
+	& .todo__title,
+	.todo__body {
+		border-color: var(--border-color);
+	}
 }
 
 .todo__bottom {
@@ -63,14 +76,20 @@
 }
 
 .todo__status {
-	border: 2px dashed black;
+	color: black;
+
+	outline: 2px dashed var(--border-color);
+	outline-offset: -4px;
+
 	padding: 5px 10px;
-	border-radius: 3px;
 
 	text-align: center;
 
 	font-weight: bold;
 	font-size: 1.5rem;
+	line-height: 2.5rem;
+
+	user-select: none;
 
 	&.low {
 		background-color: var(--blue);
@@ -87,10 +106,11 @@
 
 .todo__menu {
 	position: relative;
-	border: 2px solid black;
+	border: 2px solid var(--border-color);
 	padding: 5px 10px;
 	border-radius: 8px;
 	cursor: pointer;
+	user-select: none;
 
 	&:before {
 		content: "";
@@ -126,23 +146,34 @@
 		top: 40px;
 		left: -20px;
 		list-style: none;
-		border: 2px solid black;
+		border: 2px solid var(--border-color);
 		padding: 5px;
 		border-radius: 8px;
 		background: var(--secondary-bg);
 		display: none;
-		z-index: 2;
+		z-index: 101;
 
 		& li {
 			font-size: 2rem;
+			color: var(--text-color);
 
 			cursor: pointer;
+
+			&:not(:last-child) {
+				margin-bottom: 0.2rem;
+			}
+
 			&:hover {
 				color: var(--green-dark);
+			}
+
+			&:active {
+				transform: scale(0.9);
 			}
 		}
 	}
 	&:hover {
+		color: black;
 		background: var(--green);
 		& ul {
 			display: block;
