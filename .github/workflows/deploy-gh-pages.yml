@@ -1,0 +1,27 @@
+name: GH-pages deploy
+
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: git-checkout
+        uses: actions/checkout@v2
+
+      - name: Use Node.js -v 14.x
+        uses: actions/setup-node@v2
+        with:
+          node-version: 14.x
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+        
+      - name: Push build to gh-pages branch
+        run: git subtree push --prefix build origin gh-pages
