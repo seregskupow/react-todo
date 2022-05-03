@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "./static/css/main.88cffaae.chunk.css",
+    "main.js": "./static/js/main.51f79165.chunk.js",
+    "runtime-main.js": "./static/js/runtime-main.d048e7fc.js",
+    "static/js/2.6e16b232.chunk.js": "./static/js/2.6e16b232.chunk.js",
+    "index.html": "./index.html",
+    "service-worker.js": "./service-worker.js",
+    "static/js/2.6e16b232.chunk.js.LICENSE.txt": "./static/js/2.6e16b232.chunk.js.LICENSE.txt",
+    "static/media/facebook.17d310f3.svg": "./static/media/facebook.17d310f3.svg",
+    "static/media/google.2a514e9e.svg": "./static/media/google.2a514e9e.svg",
+    "static/media/travolta.69f51ffb.png": "./static/media/travolta.69f51ffb.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.d048e7fc.js",
+    "static/js/2.6e16b232.chunk.js",
+    "static/css/main.88cffaae.chunk.css",
+    "static/js/main.51f79165.chunk.js"
+  ]
+}
